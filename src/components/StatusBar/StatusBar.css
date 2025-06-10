@@ -1,0 +1,231 @@
+.status-bar {
+  height: 48px;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(22, 33, 62, 0.98));
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 12px;
+  backdrop-filter: blur(20px);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.status-bar::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+  opacity: 0.5;
+}
+
+.status-bar--alert-yellow {
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(62, 33, 22, 0.98));
+}
+
+.status-bar--alert-yellow::before {
+  background: linear-gradient(90deg, transparent, var(--warning-orange), transparent);
+}
+
+.status-bar--alert-red {
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(62, 22, 22, 0.98));
+  animation: status-bar-pulse 2s infinite;
+}
+
+.status-bar--alert-red::before {
+  background: linear-gradient(90deg, transparent, var(--danger-red), transparent);
+}
+
+@keyframes status-bar-pulse {
+  0%, 100% { 
+    box-shadow: inset 0 0 20px rgba(255, 0, 51, 0.1);
+  }
+  50% { 
+    box-shadow: inset 0 0 30px rgba(255, 0, 51, 0.2);
+  }
+}
+
+.status-bar__section {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+  position: relative;
+}
+
+.status-bar__section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background: var(--border-color);
+  opacity: 0.3;
+}
+
+.status-bar__ship-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-bar__ship-info strong {
+  color: var(--primary-green);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+.status-bar__registry {
+  color: var(--text-secondary);
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border-color);
+}
+
+.status-bar__alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.status-bar__alert:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.status-bar__alert-text {
+  font-weight: bold;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.status-bar__metrics {
+  display: flex;
+  gap: 16px;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.metric__label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.metric__value {
+  color: var(--primary-green);
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  min-width: 32px;
+  text-align: right;
+}
+
+.status-bar__location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-bar__location-label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.status-bar__location-value {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.status-bar__time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.status-bar__date {
+  color: var(--text-secondary);
+  font-size: 9px;
+}
+
+.status-bar__clock {
+  color: var(--primary-green);
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.status-bar__captain {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-bar__captain-label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.status-bar__captain-name {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .status-bar {
+    height: 40px;
+    padding: 0 8px;
+    font-size: 10px;
+  }
+  
+  .status-bar__section {
+    margin-right: 12px;
+  }
+  
+  .status-bar__section:not(:last-child)::after {
+    right: -6px;
+    height: 16px;
+  }
+  
+  .status-bar__ship-info {
+    gap: 4px;
+  }
+  
+  .status-bar__registry {
+    display: none;
+  }
+  
+  .status-bar__metrics {
+    gap: 8px;
+  }
+  
+  .status-bar__location,
+  .status-bar__captain {
+    display: none;
+  }
+  
+  .status-bar__time {
+    font-size: 9px;
+  }
+} 

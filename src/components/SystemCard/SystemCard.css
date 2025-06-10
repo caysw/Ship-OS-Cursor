@@ -1,0 +1,207 @@
+.system-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.system-card:hover {
+  transform: translateY(-4px);
+}
+
+.system-card__content {
+  background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9));
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.system-card__content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+  opacity: 0.5;
+}
+
+.system-card__content:hover {
+  border-color: var(--primary-green);
+  box-shadow: 
+    0 8px 32px rgba(0, 255, 65, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.system-card--online {
+  border-left: 3px solid var(--primary-green);
+}
+
+.system-card--warning {
+  border-left: 3px solid var(--warning-orange);
+}
+
+.system-card--error {
+  border-left: 3px solid var(--danger-red);
+}
+
+.system-card--offline {
+  border-left: 3px solid var(--text-muted);
+  opacity: 0.7;
+}
+
+.system-card__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.system-card__icon {
+  font-size: 24px;
+  margin-right: 12px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 255, 65, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.system-card__title h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary-green);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.system-card__status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.system-card__status-text {
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.system-card__health {
+  margin-bottom: 16px;
+}
+
+.system-card__health-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.system-card__health-label span:first-child {
+  color: var(--text-secondary);
+}
+
+.system-card__health-value {
+  color: var(--primary-green);
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.system-card__health-bar {
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  margin-bottom: 4px;
+}
+
+.system-card__health-fill {
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  box-shadow: 0 0 8px currentColor;
+  position: relative;
+}
+
+.system-card__health-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 3px 3px 0 0;
+}
+
+.system-card__health-status {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.system-card__details {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  font-family: 'Courier New', monospace;
+}
+
+.system-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.system-card__link-indicator {
+  font-size: 11px;
+  color: var(--accent-blue);
+  font-weight: 500;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.system-card:hover .system-card__link-indicator {
+  opacity: 1;
+  color: var(--primary-green);
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .system-card__content {
+    padding: 16px;
+  }
+  
+  .system-card__header {
+    margin-bottom: 12px;
+  }
+  
+  .system-card__icon {
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .system-card__title h3 {
+    font-size: 14px;
+  }
+  
+  .system-card__health,
+  .system-card__details {
+    margin-bottom: 12px;
+  }
+} 
